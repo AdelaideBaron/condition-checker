@@ -17,4 +17,15 @@ public class OpenWeatherResponse {
     @JsonProperty("data")
     private List<WeatherData> data;
 
+    public String getDescription() {
+        return data.getFirst().getWeather().getFirst().getDescription();
+    }
+
+    public double getWindSpeed() {
+        return data.getFirst().getWindSpeed();
+    }
+
+    public double getFeelsLike() {
+        return data.getFirst().getFeelsLike();
+    }
 }
