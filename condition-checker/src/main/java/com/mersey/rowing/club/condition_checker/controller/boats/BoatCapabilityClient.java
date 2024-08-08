@@ -6,6 +6,7 @@ import com.mersey.rowing.club.condition_checker.model.openweatherapi.OpenWeather
 import com.mersey.rowing.club.condition_checker.model.openweatherapi.Weather;
 import com.mersey.rowing.club.condition_checker.model.openweatherapi.WeatherData;
 import com.mersey.rowing.club.condition_checker.model.response.BoatsAllowed;
+import com.mersey.rowing.club.condition_checker.model.response.SessionConditions;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +19,32 @@ import org.springframework.stereotype.Component;
 public class BoatCapabilityClient {
 
   @Autowired BoatLimits boatLimits;
+
+  public BoatsAllowed getSessionAverage(List<SessionConditions> conditionsThroughoutSession) {
+    BoatsAllowed conditionsAtStart = conditionsThroughoutSession.get(0).getBoatsAllowed();
+    BoatsAllowed conditionsMidway = conditionsThroughoutSession.get(1).getBoatsAllowed();
+    BoatsAllowed conditionsEnd = conditionsThroughoutSession.get(2).getBoatsAllowed();
+
+    boolean singles =
+        (conditionsAtStart.isSingle() && conditionsMidway.isSingle())
+            || (conditionsMidway.isSingle() && conditionsEnd.isSingle());
+    boolean doubles =
+        (conditionsAtStart.isDoubles() && conditionsMidway.isDoubles())
+            || (conditionsMidway.isDoubles() && conditionsEnd.isDoubles());
+    boolean novice =
+        (conditionsAtStart.isNoviceFourAndAbove() && conditionsMidway.isNoviceFourAndAbove())
+            || (conditionsMidway.isNoviceFourAndAbove() && conditionsEnd.isNoviceFourAndAbove());
+    boolean senior =
+        (conditionsAtStart.isSeniorFourAndAbove() && conditionsMidway.isSeniorFourAndAbove())
+            || (conditionsMidway.isSeniorFourAndAbove() && conditionsEnd.isSeniorFourAndAbove());
+
+    return BoatsAllowed.builder()
+        .single(singles)
+        .doubles(doubles)
+        .noviceFourAndAbove(novice)
+        .seniorFourAndAbove(senior)
+        .build();
+  }
 
   public BoatsAllowed getBoatsAllowed(OpenWeatherResponse openWeatherResponse) {
     WeatherData weatherData = openWeatherResponse.getData().getFirst();

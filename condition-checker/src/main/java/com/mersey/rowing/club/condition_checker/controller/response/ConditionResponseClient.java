@@ -45,7 +45,6 @@ public class ConditionResponseClient {
       long[] value = entry.getValue();
       // for mid session
       long midSessionEpoch = value[0];
-      log.info("epoch now: {}", midSessionEpoch);
       StatusCodeObject statusCodeObjectmidSession = owac.getOpenWeatherAPIResponse(midSessionEpoch);
       sessionConditionsList.add(
           sessionConditionsMapper.mapFromStatusCodeObject(

@@ -1,31 +1,39 @@
 /* styles.css */
 body {
     font-family: Arial, sans-serif;
+    font-size: 25px; /* Reduced base font size for non-mobile */
 }
+
 .header-container {
     display: flex;
     align-items: center;
 }
+
 .header-container img {
     margin-left: 10px;
 }
+
 .calendar {
     margin-top: 20px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
+
 .calendar-header {
     font-weight: bold;
     margin-bottom: 10px;
 }
+
 .day-list {
     list-style-type: none;
     padding: 0;
 }
+
 .day-item {
     margin-bottom: 5px;
 }
+
 .day-link {
     text-decoration: none;
     color: #333;
@@ -36,13 +44,104 @@ body {
     border-radius: 3px;
     margin-right: 10px;
 }
+
 .day-link:hover {
     background-color: #e0e0e0;
 }
+
 footer {
     text-align: center;
     margin-top: 20px;
     padding: 10px;
     background-color: #f0f0f0;
     border-top: 1px solid #ccc;
+}
+
+.session-box {
+    border: 1px solid #ddd;
+    padding: 20px; /* Adjusted padding */
+    margin: 20px 0; /* Adjusted margin */
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.session-box h3 {
+    margin-top: 0;
+}
+
+.weather-section {
+    border: 1px solid #ccc;
+    padding: 20px; /* Adjusted padding */
+    margin-bottom: 20px; /* Adjusted margin */
+    background-color: #eef;
+    border-radius: 5px;
+}
+
+.weather-section h4 {
+    margin-top: 0;
+}
+
+.weather-section p {
+    margin: 5px 0; /* Adjusted margin */
+}
+
+.boats-permitted, .boats-cancelled, .average-boats-box, .sub-box {
+    padding: 20px; /* Adjusted padding */
+    border-radius: 5px;
+    margin-bottom: 20px; /* Adjusted margin */
+}
+
+.boats-permitted {
+    background-color: #d4edda;
+}
+
+.boats-cancelled {
+    background-color: #f8d7da;
+}
+
+.average-boats-box {
+    background-color: #cce5ff;
+    font-weight: bold;
+}
+
+.average-boats-box h3 {
+    margin-bottom: 5px; /* Adjusted bottom margin */
+}
+
+.average-boats-box p {
+    margin-top: 5px; /* Adjusted top margin */
+}
+
+.sub-box {
+    border: 1px solid #ccc;
+    background-color: #e9ecef;
+}
+
+/* Grid container for individual conditions */
+.conditions-container {
+    display: grid;
+    gap: 20px; /* Space between items */
+}
+
+/* General font size adjustments for smaller screens */
+@media (max-width: 600px) {
+    body {
+        font-size: 50px; /* Larger font size for mobile */
+    }
+    h1, h2, h3, h4, h5, h6 {
+        font-size: 2em; /* Adjust header sizes */
+    }
+    p, a {
+        font-size: 1.6em; /* Adjust paragraph and link sizes */
+    }
+
+    .conditions-container {
+        grid-template-columns: repeat(2, 1fr); /* Two columns on mobile */
+    }
+}
+
+@media (min-width: 601px) {
+    .conditions-container {
+        grid-template-columns: repeat(3, 1fr); /* Three columns on desktop */
+    }
 }
