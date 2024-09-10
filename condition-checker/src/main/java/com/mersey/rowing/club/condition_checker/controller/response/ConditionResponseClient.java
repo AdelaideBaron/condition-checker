@@ -1,6 +1,7 @@
 package com.mersey.rowing.club.condition_checker.controller.response;
 
 import com.mersey.rowing.club.condition_checker.controller.mapper.SessionConditionsMapper;
+import com.mersey.rowing.club.condition_checker.controller.openweather.APICounter;
 import com.mersey.rowing.club.condition_checker.controller.openweather.OpenWeatherApiClient;
 import com.mersey.rowing.club.condition_checker.controller.util.DateUtil;
 import com.mersey.rowing.club.condition_checker.model.StatusCodeObject;
@@ -11,6 +12,7 @@ import java.time.LocalDate;
 import java.util.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
@@ -26,6 +28,8 @@ public class ConditionResponseClient {
 
   @Autowired SessionConditionsMapper sessionConditionsMapper;
 
+  @Autowired APICounter apiCounter;
+
   public ResponseEntity<ConditionResponse> getConditionResponseFromDateTime( // Todo unit test this
       String date, String time) {
     List<SessionConditions> sessionConditionsList = new ArrayList<>();
@@ -33,6 +37,9 @@ public class ConditionResponseClient {
 
     for (Map.Entry<Long, long[]> entry : epochs.entrySet()) {
       UUID sessionUuid = UUID.randomUUID();
+      if (apiCounter.checkIfAPILimitIsReached()) {
+        break;
+      }
 
       // for the start
       Long key = entry.getKey();
