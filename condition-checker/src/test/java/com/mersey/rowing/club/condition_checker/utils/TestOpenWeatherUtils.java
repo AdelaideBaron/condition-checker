@@ -29,7 +29,7 @@ public class TestOpenWeatherUtils {
   public static OpenWeatherResponse getOpenWeatherResponse(int dtToUse) {
     List<Weather> weatherList = List.of(new Weather(800, "clear sky", "01d"));
     List<WeatherData> weatherDataList =
-        List.of(new WeatherData(dtToUse, 279.13, 276.44, 3.6, 3.6,weatherList));
+        List.of(new WeatherData(dtToUse, 279.13, 276.44, 3.6, 3.6, weatherList));
     return OpenWeatherResponse.builder().data(weatherDataList).build();
   }
 }

@@ -13,5 +13,4 @@ public class WeatherDataTests {
     System.out.println(myWeatherData);
     assertEquals(10, myWeatherData.feelsLikeFahrenheitToCelsius());
   }
-
 }

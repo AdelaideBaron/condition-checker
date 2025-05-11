@@ -12,7 +12,7 @@ public class MockOpenWeatherResponseGenerator {
   public static OpenWeatherResponse getOpenWeatherResponseAllGood() {
     List<Weather> weatherList = List.of(new Weather(800, "clear sky", "01d"));
     List<WeatherData> weatherDataList =
-        List.of(new WeatherData(TEST_EPOCH_TIME, 50, 50, 2,2,  weatherList)); // in imperial
+        List.of(new WeatherData(TEST_EPOCH_TIME, 50, 50, 2, 2, weatherList)); // in imperial
     return OpenWeatherResponse.builder().data(weatherDataList).build();
   }
 
@@ -47,7 +47,7 @@ public class MockOpenWeatherResponseGenerator {
   public static OpenWeatherResponse getOpenWeatherResponseWindGustSpeed(double windSpeed) {
     List<Weather> weatherList = List.of(new Weather(800, "clear sky", "01d"));
     List<WeatherData> weatherDataList =
-            List.of(new WeatherData(TEST_EPOCH_TIME, 50, 50, 2, windSpeed, weatherList));
+        List.of(new WeatherData(TEST_EPOCH_TIME, 50, 50, 2, windSpeed, weatherList));
     return OpenWeatherResponse.builder().data(weatherDataList).build();
   }
 
@@ -60,5 +60,4 @@ public class MockOpenWeatherResponseGenerator {
                 TEST_EPOCH_TIME, feelsLikeFahrenheit, feelsLikeFahrenheit, 2, 2, weatherList));
     return OpenWeatherResponse.builder().data(weatherDataList).build();
   }
-
 }

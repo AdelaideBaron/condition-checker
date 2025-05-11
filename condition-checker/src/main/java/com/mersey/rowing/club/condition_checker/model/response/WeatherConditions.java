@@ -22,5 +22,4 @@ public class WeatherConditions {
 
   @JsonProperty("wind_gust")
   private int windGust;
-
 }

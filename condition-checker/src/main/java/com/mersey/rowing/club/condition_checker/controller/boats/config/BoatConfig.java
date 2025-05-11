@@ -45,7 +45,7 @@ public class BoatConfig {
                 DOUBLE,
                 doubleWindLimit,
                 EIGHT,
-                    eightWindLimit,
+                eightWindLimit,
                 QUADS,
                 quadsWindLimit))
         .feelsLikeTempMaxCelsius(feelsLikeTempMaxCelsius)
