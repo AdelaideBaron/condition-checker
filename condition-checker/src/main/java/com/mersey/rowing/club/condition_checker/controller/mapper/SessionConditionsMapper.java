@@ -33,7 +33,7 @@ public class SessionConditionsMapper {
               .description(openWeatherResponse.getDescription())
               .windSpeed((int) Math.round(openWeatherResponse.getWindSpeed()))
               .tempFeelsLike((int) Math.round(openWeatherResponse.getFeelsLike()))
-                  .windGust((int) Math.round(openWeatherResponse.getData().getFirst().getWindGust()))
+              .windGust((int) Math.round(openWeatherResponse.getData().getFirst().getWindGust()))
               .build();
 
       String dateTime =

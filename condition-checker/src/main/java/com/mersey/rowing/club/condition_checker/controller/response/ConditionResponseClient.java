@@ -37,7 +37,8 @@ public class ConditionResponseClient {
       // for the start
       Long key = entry.getKey();
       long startEpoch = key.longValue();
-      StatusCodeObject statusCodeObjectStart = owac.getOpenWeatherAPIResponse(startEpoch); // add the wind gusts to this too
+      StatusCodeObject statusCodeObjectStart =
+          owac.getOpenWeatherAPIResponse(startEpoch); // add the wind gusts to this too
       sessionConditionsList.add(
           sessionConditionsMapper.mapFromStatusCodeObject(
               statusCodeObjectStart, sessionUuid, TimeType.SESSION_START));

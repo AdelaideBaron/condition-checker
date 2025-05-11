@@ -71,12 +71,7 @@ public class SessionConditionsMapperTests {
     when(clock.getZone()).thenReturn(ZoneId.of("Europe/London"));
 
     BoatsAllowed mockBoatsAllowed =
-        BoatsAllowed.builder()
-            .doubles(true)
-            .single(true)
-            .quads(true)
-            .eight(true)
-            .build();
+        BoatsAllowed.builder().doubles(true).single(true).quads(true).eight(true).build();
     when(boatCapabilityClient.getBoatsAllowed(MOCK_OW_RESPONSE)).thenReturn(mockBoatsAllowed);
 
     when(dateUtil.getDatetimeFromEpochSeconds(1721581200L)).thenReturn("17/06/2024 20:46");

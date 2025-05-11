@@ -16,6 +16,17 @@ An application to check the weather conditions of Mersey Rowing Club at 6am and 
 - Edit the run configurations for ConditionCheckerApplication -> edit configurations -> enable env file -> select the .env file 
 - Run the app 
 
+FROM THE COMMAND LINE
+```
+mvn spring-boot:run
+```
+
+### Formatting 
+
+mvn com.spotify:fmt-maven-plugin:2.10.0:format
+
+
+
 ### Using the jar 
 - <tests requiring docker>/...
 - Using the maven window, or maven commend (`mvn clean package`) create the JAR file 
